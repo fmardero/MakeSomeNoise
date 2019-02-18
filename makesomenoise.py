@@ -1,4 +1,5 @@
 import numpy as np
+from numba import jit
 from scipy.ndimage import rotate
 from skimage.transform import resize
 
@@ -210,6 +211,7 @@ class MakeSomeNoise:
             return self.image
         
         
+    @jit(nopython=True)
     def randomLightSource(self, return_img = False):
         '''
             Adds a random light source with gaussian diffusion.
